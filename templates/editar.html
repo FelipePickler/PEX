@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Editar Agendamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container"> <h2>Editar Agendamento</h2>
+        <form method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="{{ agendamento['nome'] }}" required><br>
+
+            <label for="data">Data:</label>
+            <input type="date" name="data" value="{{ agendamento['data'] }}" required><br>
+
+            <label for="horario">Horário:</label>
+            <select name="horario" id="horario" required>
+                {% for h in horarios %}
+                    <option value="{{ h }}" {% if agendamento['horario'] == h %}selected{% endif %}>{{ h }}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="servico">Serviço:</label>
+            <select name="servico" required>
+                <option value="Corte" {% if agendamento['servico'] == 'Corte' %}selected{% endif %}>Corte</option>
+                <option value="Barba" {% if agendamento['servico'] == 'Barba' %}selected{% endif %}>Barba</option>
+                <option value="Corte + Barba" {% if agendamento['servico'] == 'Corte + Barba' %}selected{% endif %}>Corte + Barba</option>
+            </select><br><br>
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+</body>
+</html>

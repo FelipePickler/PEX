@@ -1,0 +1,432 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f8f8f8; /* Um tom de cinza claro, similar ao da Apple */
+    color: #333;
+    line-height: 1.6; /* Aumentei um pouco a line-height para melhor legibilidade */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 30px; /* Adicionada um padding maior ao body para dar mais espaço nas margens */
+}
+
+.container {
+    width: 90%; /* Reduzi um pouco a largura para mais espaço nas laterais */
+    max-width: 1200px; /* Largura máxima um pouco maior para telas maiores */
+    margin: 40px auto; /* Aumentei a margem vertical para mais espaço */
+    padding: 30px; /* Mantive o padding interno */
+    background-color: #fff;
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra mais suave e moderna */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee; /* Linha sutil para separar o cabeçalho */
+}
+
+header h1 {
+    font-size: 2.5em; /* Aumentei um pouco a fonte do título */
+    color: #222; /* Tom de preto mais suave */
+    margin: 0;
+    font-weight: 600; /* Um pouco mais bold */
+}
+
+nav {
+    display: flex;
+    gap: 25px; /* Aumentei o espaço entre os links de navegação */
+}
+
+nav a {
+    color: #555;
+    text-decoration: none;
+    padding: 12px 18px; /* Aumentei o padding dos links */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #f0f0f0;
+    color: #222;
+}
+
+main {
+    padding: 20px 0;
+}
+
+h2 {
+    font-size: 2.2em; /* Aumentei um pouco a fonte do subtítulo */
+    color: #222;
+    margin-bottom: 30px; /* Aumentei a margem inferior */
+    font-weight: 500;
+    text-align: left; /* Alinhei os títulos à esquerda */
+}
+
+h3 {
+    font-size: 1.8em; /* Estilo para títulos menores */
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Estilo para os botões */
+.button,
+button[type="submit"],
+input[type="submit"] {
+    display: inline-block;
+    background-color: #007bff; /* Azul vibrante da Apple */
+    color: #fff;
+    padding: 14px 28px; /* Aumentei o padding dos botões */
+    border: none;
+    border-radius: 10px; /* Bordas mais arredondadas para os botões */
+    cursor: pointer;
+    font-size: 1.1em; /* Aumentei a fonte dos botões */
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15); /* Sombra um pouco mais pronunciada */
+}
+
+.button:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Tom mais escuro ao passar o mouse */
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para os formulários */
+form {
+    margin-top: 30px; /* Aumentei a margem superior dos formulários */
+    padding: 30px; /* Aumentei o padding interno dos formulários */
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 12px; /* Aumentei a margem inferior das labels */
+    font-weight: 500;
+    color: #444;
+    font-size: 1.1em; /* Aumentei a fonte das labels */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="time"],
+select {
+    width: calc(100% - 24px); /* Ajustei a largura para o padding */
+    padding: 14px; /* Aumentei o padding dos inputs e selects */
+    margin-bottom: 25px; /* Aumentei a margem inferior dos inputs e selects */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1em; /* Aumentei a fonte dos inputs e selects */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+select option {
+    font-size: 1.1em; /* Aumentei a fonte das opções do select */
+    padding: 10px; /* Aumentei o padding das opções do select */
+}
+
+/* Estilo para as tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px; /* Aumentei a margem superior da tabela */
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 18px 24px; /* Aumentei o padding das células da tabela */
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em; /* Aumentei a fonte das células da tabela */
+}
+
+th {
+    background-color: #f7f7f7;
+    color: #333;
+    font-weight: 600;
+    text-transform: none; /* Não transformar em uppercase */
+}
+
+tr:hover td {
+    background-color: #f9f9f9;
+}
+
+/* Estilo para o rodapé */
+footer {
+    margin-top: 70px; /* Aumentei a margem superior do rodapé */
+    padding: 25px 0; /* Aumentei o padding do rodapé */
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+    border-top: 1px solid #eee;
+}
+
+/* Estilo para mensagens flash */
+.flashes {
+    margin-bottom: 30px;
+}
+
+.flash {
+    padding: 18px 24px; /* Aumentei o padding das mensagens flash */
+    border-radius: 8px;
+    margin-bottom: 12px; /* Aumentei a margem inferior das mensagens flash */
+    font-size: 1.1em; /* Aumentei a fonte das mensagens flash */
+}
+
+.flash.success {
+    background-color: #e6ffe6;
+    color: #1a7300;
+    border: 1px solid #b3e6b3;
+}
+
+.flash.error {
+    background-color: #ffe6e6;
+    color: #cc0000;
+    border: 1px solid #ffb3b3;
+}
+
+.flash.warning {
+    background-color: #fff8e6;
+    color: #b38f00;
+    border: 1px solid #ffe680;
+}
+
+/* Estilo para o modal de confirmação */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050; /* Um pouco maior para garantir que fique acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo mais escuro */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* Ajustei a margem */
+    padding: 30px; /* Aumentei o padding */
+    border-radius: 12px;
+    width: 80%;
+    max-width: 600px; /* Largura máxima um pouco maior */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+    position: relative;
+}
+
+.modal-header {
+    font-size: 2em; /* Aumentei a fonte do cabeçalho do modal */
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 25px; /* Aumentei a margem inferior do cabeçalho do modal */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 36px; /* Aumentei a fonte do botão de fechar */
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+}
+
+.modal-body {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 25px; /* Aumentei a margem inferior do corpo do modal */
+    color: #444;
+}
+
+.modal-footer {
+    text-align: right;
+}
+
+.modal-button {
+    padding: 14px 28px; /* Aumentei o padding dos botões do modal */
+    font-size: 1.1em; /* Aumentei a fonte dos botões do modal */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px; /* Bordas mais arredondadas para os botões do modal */
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+    background-color: #0056b3;
+}
+
+.modal-cancel {
+    background-color: #dc3545; /* Vermelho para cancelar */
+}
+
+.modal-cancel:hover {
+    background-color: #c82333;
+}
+
+/* Estilo específico para a página de agendamento */
+#calendario-disponibilidade {
+    margin-top: 40px; /* Mais espaço acima do calendário de disponibilidade */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#calendar-disponibilidade-view .fc-header-toolbar {
+    margin-bottom: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#calendar-disponibilidade-view .fc-button {
+    background-color: #e0e0e0 !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    padding: 0.7em 1.2em !important;
+    font-size: 1em !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+#calendar-disponibilidade-view .fc-button:hover {
+    background-color: #d0d0d0 !important;
+}
+
+#calendar-disponibilidade-view .fc-toolbar-title h2 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #222;
+    font-weight: 500;
+}
+
+#calendar-disponibilidade-view .fc-daygrid-day-number {
+    padding: 0.5em;
+}
+
+#calendar-disponibilidade-view .fc-daygrid-day.fc-day-today {
+    background-color: #e6f7ff !important;
+}
+
+/* Estilo específico para a página de índice (calendário principal) */
+#calendar {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    margin-top: 40px; /* Mais espaço acima do calendário principal */
+}
+
+#calendar .fc-header-toolbar {
+    margin-bottom: 1.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#calendar .fc-button {
+    background-color: #f0f0f0 !important;
+    color: #333 !important;
+    border: 1px solid #ccc !important;
+    border-radius: 8px !important;
+    padding: 0.7em 1.2em !important;
+    font-size: 1em !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+#calendar .fc-button:hover {
+    background-color: #e0e0e0 !important;
+}
+
+#calendar .fc-toolbar-title h2 {
+    font-size: 1.8em;
+    margin: 0;
+    color: #222;
+    font-weight: 500;
+}
+
+#calendar .fc-day-header {
+    background-color: #f7f7f7 !important;
+    color: #555 !important;
+    padding: 1em 0.5em !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+#calendar .fc-day {
+    border: 1px solid #eee !important;
+}
+
+#calendar .fc-today {
+    background-color: #e6f7ff !important; /* Azul claro suave para o dia atual */
+}
+
+#calendar .fc-event {
+    background-color: #007bff !important;
+    color: #fff !important;
+    border: 1px solid #007bff !important;
+    border-radius: 8px !important;
+    padding: 0.5em 0.7em !important;
+    margin-bottom: 0.3em !important;
+    font-size: 0.9em !important;
+    cursor: pointer !important;
+}
+
+#calendar .fc-event:hover {
+    opacity: 0.9;
+}
+
+/* Estilo para a página de estatísticas */
+#estatisticas-container {
+    margin-top: 30px;
+}
+
+#estatisticas-container h3 {
+    margin-top: 25px;
+}
+
+.grafico-container {

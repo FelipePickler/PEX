@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Confirmação de Agendamento</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      background-color: #f7f7f7;
+
+      padding: 20px;
+
+      color: #333;
+
+    }
+
+    .email-container {
+
+      background-color: #ffffff;
+
+      padding: 30px;
+
+      border-radius: 10px;
+
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+      max-width: 600px;
+
+      margin: 0 auto;
+
+    }
+
+    .email-header {
+
+      text-align: center;
+
+      font-size: 1.5em;
+
+      color: #3498db;
+
+      margin-bottom: 20px;
+
+    }
+
+    .email-content {
+
+      font-size: 1.1em;
+
+      line-height: 1.6;
+
+    }
+
+    .email-footer {
+
+      margin-top: 30px;
+
+      text-align: center;
+
+      font-size: 0.9em;
+
+      color: #888;
+
+    }
+
+    .button {
+
+      display: inline-block;
+
+      background-color: #3498db;
+
+      color: #ffffff;
+
+      padding: 10px 20px;
+
+      border-radius: 5px;
+
+      text-decoration: none;
+
+      font-size: 1em;
+
+      margin-top: 20px;
+
+    }
+
+    .button:hover {
+
+      background-color: #2980b9;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="email-container">
+
+    <div class="email-header">
+
+      <h2>Confirmação de Agendamento</h2>
+
+    </div>
+
+    <div class="email-content">
+
+      <p>Olá {{ nome_cliente }},</p>
+
+      <p>Seu agendamento foi realizado com sucesso! Aqui estão os detalhes:</p>
+
+      <ul>
+
+        <li><strong>Data:</strong> {{ data }}</li>
+
+        <li><strong>Horário:</strong> {{ horario }}</li>
+
+        <li><strong>Serviço:</strong> {{ servico }}</li>
+
+      </ul>
+
+      <p>Se você precisar alterar ou cancelar seu agendamento, por favor, entre em contato conosco.</p>
+
+      <p>Aguardamos sua visita!</p>
+
+      <a href="{{ url_agendamento }}" class="button">Ver Detalhes do Agendamento</a>
+
+    </div>
+
+    <div class="email-footer">
+
+      <p>Atenciosamente,</p>
+
+      <p><strong>Equipe da Barbearia</strong></p>
+
+      <p>Se você não fez esse agendamento, entre em contato com a nossa equipe imediatamente.</p>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

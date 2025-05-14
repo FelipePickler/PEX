@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Agendar Horário{% endblock %}
+{% block content %}
+    <h2>Agendar Horário</h2>
+    <form method="POST" action="{{ url_for('agendar') }}">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" required><br>
+
+        <label for="servico">Serviço:</label>
+        <select name="servico" required>
+            <option value="Corte">Corte</option>
+            <option value="Barba">Barba</option>
+            <option value="Corte + Barba">Corte + Barba</option>
+        </select><br>
+
+        <label for="data">Data:</label>
+        <input type="date" name="data" id="data" value="{{ data_selecionada }}" required><br>
+
+        <label for="horario">Horário:</label>
+        <select name="horario" id="horario" required>
+            {% for h in horarios %}
+                <option value="{{ h }}">{{ h }}</option>
+            {% endfor %}
+        </select><br>
+
+        <input type="submit" value="Agendar">
+    </form>
+
+    <div id="calendario-disponibilidade" style="margin-top: 30px;">
+        <h3>Horários Disponíveis</h3>
+        <div id="calendar-disponibilidade-view"></div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar-disponibilidade-view');
+            var dataInput = document.getElementById('data');
+            var horarioSelect = document.getElementById('horario');
+            var horariosDisponiveisUrl = '/horarios_disponiveis/';
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'pt-br',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: '' // Removendo os selectores de visualização
+                },
+                selectable: true,
+                select: function(info) {
+                    var selectedDate = info.startStr;
+                    dataInput.value = selectedDate; // Atualiza o campo de data do formulário
+
+                    // Busca os horários disponíveis para a data selecionada
+                    fetch(horariosDisponiveisUrl + selectedDate)
+                        .then(response => response.json())
+                        .then(horarios => {
+                            horarioSelect.innerHTML = ''; // Limpa as opções existentes
+                            if (horarios.length > 0) {
+                                horarios.forEach(function(horario) {
+                                    var option = document.createElement('option');
+                                    option.value = horario;
+                                    option.textContent = horario;
+                                    horarioSelect.appendChild(option);
+                                });
+                            } else {
+                                var option = document.createElement('option');
+                                option.value = '';
+                                option.textContent = 'Nenhum horário disponível';
+                                horarioSelect.appendChild(option);
+                            }
+                        });
+                }
+            });
+
+            calendar.render();
+
+            // Atualiza o calendário quando a data no input muda
+            dataInput.addEventListener('change', function() {
+                calendar.gotoDate(this.value);
+                fetch(horariosDisponiveisUrl + this.value)
+                    .then(response => response.json())
+                    .then(horarios => {
+                        horarioSelect.innerHTML = '';
+                        if (horarios.length > 0) {
+                            horarios.forEach(function(horario) {
+                                var option = document.createElement('option');
+                                option.value = horario;
+                                option.textContent = horario;
+                                horarioSelect.appendChild(option);
+                            });
+                        } else {
+                            var option = document.createElement('option');
+                            option.value = '';
+                            option.textContent = 'Nenhum horário disponível';
+                            horarioSelect.appendChild(option);
+                        }
+                    });
+            });
+        });
+    </script>
+{% endblock %}

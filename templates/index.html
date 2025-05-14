@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Início{% endblock %}
+{% block content %}
+    <h1>Bem-vindo à Barbearia</h1>
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="{{ url_for('agendar') }}" class="button">Agendar Horário</a>
+        <a href="{{ url_for('admin') }}" class="button" style="margin-left: 15px;">Painel do Administrador</a>
+    </div>
+
+    <div id="calendar" style="margin-top: 50px;"></div>
+{% endblock %}
+
+{% block styles %}
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' />
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                locale: 'pt-br',
+                events: "{{ url_for('get_agendamentos') }}",
+                editable: false,
+                selectable: true,
+                select: function(startDate, endDate) {
+                    let data_selecionada = startDate.format('YYYY-MM-DD');
+                    window.location.href = `/agendar?data=${data_selecionada}`;
+                },
+                eventClick: function(calEvent, jsEvent, view) {
+                    alert('Agendamento para: ' + calEvent.title + ' em ' + calEvent.start.format());
+                    // Adicionar mais lógica aqui se necessário (e.g., visualizar detalhes)
+                }
+            });
+        });
+    </script>
+{% endblock %}

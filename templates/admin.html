@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Painel Administrativo{% endblock %}
+
+{% block content %}
+    <h2>Administração de Agendamentos</h2>
+
+    <form method="GET" action="{{ url_for('admin') }}">
+        <label for="filtro_data">Filtrar por Data:</label>
+        <input type="date" name="filtro_data" value="{{ filtro_data }}">
+        <label for="filtro_servico">Filtrar por Serviço:</label>
+        <select name="filtro_servico">
+            <option value="">Todos</option>
+            {% for servico in servicos %}
+            <option value="{{ servico }}" {% if filtro_servico == servico %}selected{% endif %}>{{ servico }}</option>
+            {% endfor %}
+        </select>
+        <label for="filtro_nome">Filtrar por Nome:</label>
+        <input type="text" name="filtro_nome" value="{{ filtro_nome }}">
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Serviço</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td>{{ agendamento.nome }}</td>
+                <td>{{ agendamento.servico }}</td>
+                <td>{{ agendamento.data }}</td>
+                <td>{{ agendamento.horario }}</td>
+                <td>
+                    <a href="{{ url_for('editar', id=agendamento.id) }}">Editar</a> |
+                    <form method="POST" action="{{ url_for('excluir', id=agendamento.id) }}" style="display:inline;">
+                        <input type="submit" value="Excluir" onclick="return confirm('Tem certeza que deseja excluir este agendamento?')">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{{ url_for('exportar') }}">Exportar para CSV</a>
+
+{% endblock %}
